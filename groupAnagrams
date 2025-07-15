@@ -1,22 +1,9 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        list_of_anagrams = []
-        marked = [False] * len(strs)
-        char_counts = {}
-        for char in strs:
-            for c in char:
-                char_counts[c] = char_counts.get(c, 0) + 1
-            list_of_anagrams.append(char_counts.copy())
-            char_counts.clear()
-        anagram_groups= [[] for _ in range(len(list_of_anagrams))]
-        for i in range(len(list_of_anagrams)):
-            if marked[i] is False:
-                marked[i] = True
-                anagram_groups[i].append(strs[i])
-            for j in range(i+1, len(list_of_anagrams)):
-                if list_of_anagrams[i] == list_of_anagrams[j]:
-                    if marked[j] is False:
-                        anagram_groups[i].append(strs[j])
-                        marked[j] = True
-        filtered_list = [sublist for sublist in anagram_groups if sublist]
-        return(filtered_list)
+        res = defaultdict(list)
+        for s in strs:
+            sortedS = ''.join(sorted(s))
+            print(sortedS)
+            res[sortedS].append(s)
+            print(res)
+        return list(res.values())
