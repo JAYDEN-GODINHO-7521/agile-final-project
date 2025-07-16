@@ -6,4 +6,5 @@ class Solution:
             print(sortedS)
             res[sortedS].append(s)
             print(res)
+            print("Current anagrams group:", res[sortedS])
         return list(res.values())
